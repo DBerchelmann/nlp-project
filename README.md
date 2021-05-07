@@ -2,7 +2,7 @@
 
 Hi there,
 
-Welcome to the README file for my individual project covering <b>classification of gender based on 2016 San Antonio City Employee Compensation</b>
+Welcome to the README file for my NLP project covering <b>the prediction of programming language of github repositories based on README files.</b>
 
 In here, you will find expanded information on this project including goals, how I will be working through the pipeline and a data dictionary to help offer more insight to the variables that are being used.
 
