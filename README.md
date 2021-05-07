@@ -1,4 +1,4 @@
-<h1> NLP Project - Prediciting Repository Languages </h1>
+<h1> NLP Project - Predicting Repository Languages </h1>
 
 Hi there,
 
