@@ -1,8 +1,11 @@
 import pandas as pd
 import pandas as pd
+from sklearn.feature_extraction.text import TfidfVectorizer
+import nltk
+import unicodedata
+import re
 
-
-~~~~~~~~~~~~~~~'''acquire_csv'''~~~~~~~~~~~~~~~~~~~~~~~
+#~~~~~~~~~~~~~~~acquire_csv~~~~~~~~~~~~~~~~~~~~~~~
 
 def acquire_csv():
     
@@ -11,7 +14,7 @@ def acquire_csv():
     return df
 
 
-~~~~~~~~~~~~~~~'''initial_clean'''~~~~~~~~~~~~~~~~~~~~~~~
+#~~~~~~~~~~~~~~~initial_clean~~~~~~~~~~~~~~~~~~~~~~~
 
 def first_clean():
     
@@ -41,7 +44,7 @@ def first_clean():
     
     return df
 
-~~~~~~~~~~~~~~~~~'''NLP_clean_function'''~~~~~~~~~~~~~~~
+#~~~~~~~~~~~~~~~~~NLP_clean_function~~~~~~~~~~~~~~~
 
 def clean_nlp(readme_contents):
     
@@ -57,3 +60,5 @@ def clean_nlp(readme_contents):
              .lower())
     words = re.sub(r'[^\w\s]', '', readme_contents).split()
     return [wnl.lemmatize(word) for word in words if word not in stopwords]
+
+
