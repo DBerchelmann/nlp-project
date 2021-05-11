@@ -42,15 +42,19 @@ def first_clean():
     
     df.drop(drop_languages , inplace=True)
     
+    # drop jupyter notebook
+    
+    df.drop(df[df['language'] == 'Jupyter Notebook'].index, inplace = True)
+    
     return df
 
 #~~~~~~~~~~~~~~~~~NLP_clean_function~~~~~~~~~~~~~~~
 
 def clean_nlp(readme_contents):
     
-    'A simple function to cleanup text data'
+    'A simple function to cleanup text data for bigram/trigram exploration'
     
-    ADDITIONAL_STOPWORDS = ['r', 'u', '2', 'ltgt', '\n', 'ha']
+    ADDITIONAL_STOPWORDS = ['r', 'u', '2', 'ltgt', '\n', 'ha', 'use', '1', '0', 'used', 'using']
     
     wnl = nltk.stem.WordNetLemmatizer()
     stopwords = nltk.corpus.stopwords.words('english') + nltk.corpus.stopwords.words('portuguese') + nltk.corpus.stopwords.words('spanish') + nltk.corpus.stopwords.words('french') + ADDITIONAL_STOPWORDS
@@ -62,3 +66,18 @@ def clean_nlp(readme_contents):
     return [wnl.lemmatize(word) for word in words if word not in stopwords]
 
 
+#~~~~~~~~~~~~~~~~~NLP_clean_function~~~~~~~~~~~~~~~
+def clean_final(readme_contents):
+    
+    'A simple function to cleanup text data before train/validate/test'
+    
+    ADDITIONAL_STOPWORDS = ['r', 'u', '2', 'ltgt', '\n', 'ha']
+    
+    wnl = nltk.stem.WordNetLemmatizer()
+    stopwords = nltk.corpus.stopwords.words('english') + nltk.corpus.stopwords.words('portuguese') + nltk.corpus.stopwords.words('spanish') + nltk.corpus.stopwords.words('french') + ADDITIONAL_STOPWORDS
+    readme_contents = (unicodedata.normalize('NFKD', readme_contents)
+             .encode('ascii', 'ignore')
+             .decode('utf-8', 'ignore')
+             .lower())
+    words = re.sub(r'[^\w\s]', '', readme_contents).split()
+    return " ".join([wnl.lemmatize(word) for word in words if word not in stopwords])
