@@ -9,6 +9,8 @@ import re
 
 def acquire_csv():
     
+    '''This function acquires the CSV'''
+    
     df = pd.read_csv(r'f1_readmes.csv')
     
     return df
@@ -18,6 +20,7 @@ def acquire_csv():
 
 def first_clean():
     
+    ''' This function does an initial clean of the data set but does not lematize, see next function for that'''
     
     # acquire the csv by running the acquire_csv function. make sure the csv is in your local folder
     df = acquire_csv()

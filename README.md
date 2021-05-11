@@ -29,6 +29,18 @@ In here, you will find expanded information on this project including goals, how
 ------------------
 <H3><u> Project Planning </u></H3>
 
+- Plan project out
+    - Thurs-Friday (planning/acquiring/cleaning)
+    - Saturday-Monday afternoon (exploring/modeling/finalnotebook)
+    - Monday afternoon/evening (Complete slide presentation/Practice presentation 3 times, with 2 recordings)
+
+Other to-dos
+
+- Determine Git Hub Search Parameter
+- Create acquire function to acquire data
+- Create functions to clean the data
+- Create unique word clouds
+
 
 
 -------------
@@ -44,7 +56,8 @@ In here, you will find expanded information on this project including goals, how
 |  repo |Object    | name of the github repository   |
 |   language  | Object |dominant programming language that makes up the repository |
 |  readme_contents  | Object |text that makes up the README file |
-
+|  written_language  | Object |native language that README was written in |
+|  readme_length  | Int64 |total length of words of README|
 
 
 
@@ -53,7 +66,11 @@ In here, you will find expanded information on this project including goals, how
 -------------------
  <h3><u>Hypothesis and Questions</u></h3>
 
+- Do README's in other languages affect the accuracy of the model?
 
+- What are the median lengths of README's based on programming languages?
+
+- Do certain programming languages have noticible unique words that are only common to their specific language?
 
 
 --------------------
@@ -62,7 +79,7 @@ In here, you will find expanded information on this project including goals, how
  To recreate this project you will need use the following files:
  
  - acquire.py
- - prepare.py
+ - wrangle.py
  - explore.py
  - model.py 
  
@@ -72,7 +89,7 @@ In here, you will find expanded information on this project including goals, how
  
  <b>Step 1.</b> Import all necessary libraries to run functions. These can be found in each corresponding .py file
  
- <b>Step 2.</b> Use pd.read to bring in the csv file from your local folder. 
+ <b>Step 2.</b> Use pd.read to bring in the csv file from your local folder. Use the f1_readmes.csv file located in this repository 
  
  <b>Step 3.</b> To see the the cleaned data set before training do the following:
  
@@ -115,8 +132,18 @@ from sklearn.metrics import confusion_matrix
 <h3>Key Takeaways, Recommendations, & Next Steps</h3>
 
 
+Through this classification project I came away with the following <b> key takeways</b>:
+
+- The higher the number of repositories with a certain language, the better the model is at predicting it
+     - We saw this with the high accuracies for our top 3 languages by value_counts (JavaScript, Python, HTML)
+- JS, Python, & HTML also each had repositories in different languages so it's hard to make an argument that language played a factor as those language specific stopwords were accounted for in the cleaning of the data
+- I thought having repositories in different langauages would affect the accuracy but as it turns out, that didn't seem to be an issue as the top 3 languages (JS, Python, HTML) all had repositories in multiple languages.
 
 <b>Recommendations & next steps</b>:
+
+- More repositories will increase the sample size and will allow for greater accuracy
+- Going with repositories that focused on Formula 1 was off the main path and it lead to issues with not only empty repositories but poorly constructed README files as well.
+- Going forward, this model could be improved further by limiting the number of languages to a top 5 
 
 
 -----

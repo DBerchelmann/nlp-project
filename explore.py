@@ -16,3 +16,5 @@ def show_counts_and_ratios(df, column):
     labels
     return labels
 
+
+
